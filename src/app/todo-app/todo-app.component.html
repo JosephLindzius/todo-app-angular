@@ -1,0 +1,11 @@
+<h3>You have {{ todos.length }} todos.</h3>
+
+<input [value]="inputValue" (input)="onChange($event)" /><button
+  (click)="onClick()"
+>
+  Add Todo
+</button>
+
+<ul>
+  <app-todo-item *ngFor="let todo of todos" [item]="todo" (someoneClickedOnMe)="removeItem($event)"></app-todo-item>
+</ul>
