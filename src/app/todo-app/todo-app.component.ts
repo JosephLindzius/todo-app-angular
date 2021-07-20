@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import { v4 } from 'uuid';
+import {ITodo} from "../types";
 
 @Component({
   selector: 'app-todo-app',
@@ -7,19 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoAppComponent {
   inputValue: string = 'Learn Angular';
-  todos: string[] = [];
+  todos: ITodo[] = [];
+
+  @ViewChild('inputTodo')
+  input!: ElementRef<HTMLInputElement>
+
+  ngAfterViewInit(){
+    this.input.nativeElement.focus();
+    console.log('onAfterViewInit')
+  }
 
   onClick() {
-    this.todos.push(this.inputValue);
+    if (this.input.nativeElement.value){
+      const todo: ITodo = {
+        uuid: v4().toString(),
+        label: this.input.nativeElement.value
+      }
+      this.todos.push(todo);
+      this.input.nativeElement.value = '';
+    }
   }
 
-  onChange(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.inputValue = value;
-  }
-
-  removeItem(todo: any) {
-    console.log(todo);
+  removeItem(todo: ITodo) {
     this.todos = this.todos.filter((item) => item !== todo);
   }
 }

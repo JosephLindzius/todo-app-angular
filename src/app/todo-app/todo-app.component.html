@@ -1,6 +1,6 @@
 <h3>You have {{ todos.length }} todos.</h3>
 
-<input [value]="inputValue" (input)="onChange($event)" /><button
+<input [value]="inputValue" #inputTodo /><button
   (click)="onClick()"
 >
   Add Todo

@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
+import {ITodo} from "../types";
 
 @Component({
   selector: 'app-todo-item',
@@ -6,12 +7,13 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent {
-  @Input('item') todo = '';
+  @Input('item') todo!: ITodo;
 
   @Output()
-  someoneClickedOnMe: EventEmitter<string> = new EventEmitter();
+  someoneClickedOnMe: EventEmitter<ITodo> = new EventEmitter();
 
-  removeItemFromChild(todo: string) {
+
+  removeItemFromChild(todo: ITodo) {
     this.someoneClickedOnMe.emit(todo);
   }
 }
