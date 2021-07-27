@@ -1,4 +1,14 @@
-<li>
-    {{ todo.label }}
-    <button (click)="removeItemFromChild(todo)">Delete</button>
-</li>
+<div cdkDrag #todoContainer class="todo__list_item" cdkDragBoundary=".todo__main">
+  {{todo.position}}
+  <div class="todo__list_copy_container">
+    <button  class="todo__list_button color-red todo__list_button_delete"  (click)="removeTodo(todo)">X</button>
+    <p>{{ todo.label }}</p>
+    <button  class="todo__list_button"  *ngIf="edit == false" (click)="editTodo(todo)">Edit</button>
+  </div>
+
+  <div class="todo__list_button_container" *ngIf="edit">
+    <input value="{{todo.label}}" #editInput>
+    <button class="todo__list_button" (click)="saveTodo(todo)">Save</button>
+  </div>
+</div>
+

@@ -1,11 +1,27 @@
-<h3>You have {{ todos.length }} todos.</h3>
+<div class="todo__whitespace_2"></div>
+<header class="todo__header">
+  <div class="todo__whitespace_1"></div>
+  <h3>You have {{ todos.length }} todos.</h3>
+  <div class="todo__whitespace_1"></div>
+  <input [value]="inputValue" #inputTodo />
+  <div class="todo__whitespace_1"></div>
+  <button (click)="onClick()">Add Todo</button>
+</header>
+<div class="todo__whitespace_2"></div>
+<main class="todo__main">
+  <div class="todo__ul_group">
+    <div #columnSeperate>
+      <app-todo-item
+        *ngFor="let todo of todos;"
+        [item]="todo"
+        (someoneClickedOnMe)="removeItem(todo)"
+        (editButtonClicked)="editItem()"
+        (savedButtonClicked)="saveItem(todo)"
+      ></app-todo-item>
+    </div>
+  </div>
 
-<input [value]="inputValue" #inputTodo /><button
-  (click)="onClick()"
->
-  Add Todo
-</button>
 
-<ul>
-  <app-todo-item *ngFor="let todo of todos" [item]="todo" (someoneClickedOnMe)="removeItem($event)"></app-todo-item>
-</ul>
+
+</main>
+

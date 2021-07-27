@@ -1,0 +1,33 @@
+/* 8FB9A8   FEFAD4   FCD0BA   F1828D   765D69 */
+
+.todo__ul_group {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.todo__main {
+  margin: 0 auto;
+  width: 80vw;
+  height: 65%;
+  z-index: -10;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  border: #FEFAD4 4px solid;
+  border-radius: 4px;
+  backdrop-filter: blur(20px);
+  cursor: move;
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.todo__header {
+  backdrop-filter: blur(10px);
+  border: #FEFAD4 3px solid;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 200px;
+  padding: 10px;
+}
